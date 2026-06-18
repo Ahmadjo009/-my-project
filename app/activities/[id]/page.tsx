@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Card } from '@/components/Card';
 import { ArrowRight, Calendar, Clock, MapPin, GraduationCap, Info, BookOpen } from 'lucide-react';
 
-export default function ActivityDetailsPage({ params }: { params: { id: string } }) {
+export default async function ActivityDetailsPage({ params }: { params: Promise<{ id: string }> }) {
   // In a real app, fetch the activity by ID using params.id
   
   return (
