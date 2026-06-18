@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Cairo } from "next/font/google";
 import "./globals.css";
+import { BottomNav } from "@/components/BottomNav";
+import { AuthProvider } from "@/contexts/AuthContext";
 
-const inter = Inter({ subsets: ["latin"] });
+const cairo = Cairo({ subsets: ["arabic"] });
 
 export const metadata: Metadata = {
   title: "المنصة",
@@ -16,7 +18,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl">
-      <body className={inter.className}>{children}</body>
+      <body className={`${cairo.className} bg-slate-50 text-slate-900`}>
+        <AuthProvider>
+          <div className="pb-safe">
+            {children}
+          </div>
+          <BottomNav />
+        </AuthProvider>
+      </body>
     </html>
   );
 }
